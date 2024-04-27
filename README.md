@@ -100,8 +100,6 @@ This guide provides detailed instructions for setting up and using a Raspberry P
 - Use a case to protect the Pi from dust and physical damage.
 - Use a surge protector to protect the Pi from power surges.
 
-Sure, I can expand the README.md to include a section with example code for a Raspberry Pi project. For the Slack bot that monitors AWS resources, I will provide a basic Python script example. This script can be adapted and expanded based on your specific needs.
-
 ---
 
 # Raspberry Pi 2 Model B Setup and Usage Guide
