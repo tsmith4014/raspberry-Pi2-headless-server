@@ -1,4 +1,4 @@
-﻿Chapter 1 Review Questions
+﻿Chapter 1 Review Questions (reference data, not used in logic refer to answer.txt and questions.txt)
 1. Your developers want to run fully provisioned EC2 instances to support their application code deployments but prefer not to have to worry about manually configuring and launching the necessary infrastructure. Which of the following should they use?
    1. AWS Lambda
    2. AWS Elastic Beanstalk

@@ -19,8 +19,8 @@ def extract_qa_pairs(chapter_questions, chapter_answers):
     return qa_pairs
 
 # Read the text file content for questions and answers
-questions_path = 'questions.txt'  # Update with the correct file path for questions
-answers_path = 'answers.txt'  # Update with the correct file path for answers
+questions_path = './input_data_files/questions.txt'  # Update with the correct file path for questions
+answers_path = './input_data_files/answers.txt'  # Update with the correct file path for answers
 
 questions_text = Path(questions_path).read_text()
 answers_text = Path(answers_path).read_text()
@@ -35,10 +35,11 @@ print(f"Number of answer chapters: {len(chapter_answers_split)}")
 
 # Match questions with answers for each chapter
 all_qa_pairs = {}
-for i, (chapter_questions, chapter_answers) in enumerate(zip(chapter_questions_split, chapter_answers_split)):
+for i, (chapter_questions, chapter_answers) in enumerate(zip(chapter_questions_split, chapter_answers_split)): #This logic works like this: for each chapter, extract the question and answer pairs using the extract_qa_pairs function. Then, update the all_qa_pairs dictionary with the extracted QA pairs for that chapter. This process is repeated for all chapters.any
+
     print(f"Processing Chapter {i+1}")  # Debugging: Print current chapter being processed
-    chapter_qa_pairs = extract_qa_pairs(chapter_questions, chapter_answers)
-    all_qa_pairs.update(chapter_qa_pairs)
+    chapter_qa_pairs = extract_qa_pairs(chapter_questions, chapter_answers) #We extract the QA pairs for the current chapter using the extract_qa_pairs function.
+    all_qa_pairs.update(chapter_qa_pairs) #We update the all_qa_pairs dictionary with the extracted QA pairs for the current chapter.
 
 # Print first few QA pairs for review
 for i, (q, a) in enumerate(all_qa_pairs.items()):
@@ -48,13 +49,62 @@ for i, (q, a) in enumerate(all_qa_pairs.items()):
         break
 
 # Write the QA pairs to a file
-output_file_path = 'qa_pairs_output.txt'  # Update with desired output file path
+output_file_path = './output_data_files/qa_pairs_output.txt'  # Update with desired output file path
 with open(output_file_path, 'w') as file:
     for question, answer in all_qa_pairs.items():
         file.write(f"Question: {question}\nAnswer: {answer}\n\n")
 
 print(f"Question-answer pairs have been saved to {output_file_path}")
 
+
+
+
+
+
+
+
+##############################################################################################################
+###########old attempts below for reference###################################################################
+
+
+# # Read the text file content for questions and answers
+# questions_path = 'questions.txt'  # Update with the correct file path for questions
+# answers_path = 'answers.txt'  # Update with the correct file path for answers
+
+# questions_text = Path(questions_path).read_text()
+# answers_text = Path(answers_path).read_text()
+
+# # Define patterns to extract questions and answers
+# question_pattern = re.compile(r'(\d+\..+?)(?=\n\d+\.|\nChapter|\Z)', re.DOTALL)
+# answer_pattern = re.compile(r'(\d+\..+?)(?=\n\d+\.|\nChapter|\Z)', re.DOTALL)
+
+# # Extract questions and answers
+# questions = question_pattern.findall(questions_text)
+# answers = answer_pattern.findall(answers_text)
+
+# # Match questions with answers
+# qa_pairs = {}
+# for question in questions:
+#     question_number = question.split('.')[0].strip()
+#     for answer in answers:
+#         if answer.startswith(question_number + '.'):
+#             qa_pairs[question.strip()] = answer.strip()
+#             break
+
+# # Print first few QA pairs for review
+# for i, (q, a) in enumerate(qa_pairs.items()):
+#     if i < 10:  # Limit to first 10 pairs
+#         print(f"Question: {q}\nAnswer: {a}\n")
+#     else:
+#         break
+
+# # Write the QA pairs to a file
+# output_file_path = 'qa_pairs_output.txt'  # Update with desired output file path
+# with open(output_file_path, 'w') as file:
+#     for question, answer in qa_pairs.items():
+#         file.write(f"Question: {question}\nAnswer: {answer}\n\n")
+
+# print(f"Question-answer pairs have been saved to {output_file_path}")
 
 
 # import re
@@ -144,10 +194,6 @@ print(f"Question-answer pairs have been saved to {output_file_path}")
 #         file.write(f"Question: {question}\nAnswer: {answer}\n\n")
 
 # print(f"Question-answer pairs have been saved to {output_file_path}")
-
-
-
-
 
 # import re
 # from pathlib import Path
