@@ -1,15 +1,26 @@
 import json
 import random
+import fuzzywuzzy
 
 # Function to load the lookup table from a JSON file
 def load_lookup_table(file_path):
     with open(file_path, 'r') as file:
         return json.load(file)
 
+# # Function to get answer from the lookup table based on the question
+# def get_answer(question, lookup_table):
+#     normalized_question = question.strip().lower()
+#     return lookup_table.get(normalized_question, "Sorry, I don't have an answer for that.")
+
+from fuzzywuzzy import process
+
 # Function to get answer from the lookup table based on the question
 def get_answer(question, lookup_table):
     normalized_question = question.strip().lower()
-    return lookup_table.get(normalized_question, "Sorry, I don't have an answer for that.")
+    best_match = process.extractOne(normalized_question, lookup_table.keys())
+    if best_match[1] < 80:  # if match quality is less than 80 out of 100
+        return "Sorry, I don't have an answer for that."
+    return lookup_table.get(best_match[0], "Sorry, I don't have an answer for that.")
 
 # Function to start a quiz
 def start_quiz(lookup_table, num_questions):
@@ -27,7 +38,7 @@ def start_quiz(lookup_table, num_questions):
 
 # Main chatbot logic
 def chatbot():
-    lookup_table = load_lookup_table('lookup_table.json')  # Update with the correct file path
+    lookup_table = load_lookup_table('./output_data_files/lookup_table.json')  # Update with the correct file path
 
     while True:
         user_input = input("Enter 'quiz' to start a quiz, ask a question about AWS, or type 'exit' to quit: ")

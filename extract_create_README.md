@@ -56,14 +56,41 @@ This project transforms a raw text file (`aws.txt`) containing AWS certification
    cd your-project-directory
    ```
 
-2. Install necessary dependencies (if any).
+2. Navigate to the project directory:
+
+   ```bash
+   cd your-project-directory
+   ```
+
+3. Create a virtual environment for the project:
+
+   ```bash
+   python -m venv venv
+   ```
+
+4. Install necessary dependencies using `pip` however these are for the fuzzy matching and the chatbot library which are WIP:
+
+   ```bash
+   pip install -r requirements.txt
+   ```
 
 ### Running the Applications
+
+**Local Server Pi Quiz Bot**:
+
+1. Run the `chatbot.py` script to start the quiz bot:
+
+   ```bash
+   python chatbot.py
+   ```
+
+2. The "ask a question will not work" the way you think so just dont select that option when prompted instead type in quiz and it will prompt you for how many questions you want the quiz to be, enter a number and the quiz starts. \*\*\*\*The questions are random and will have the questions orginal number from the quiz so just kind of ignore that and also the answers are 1,2,3,4 but the quizbot will give the answers as A=1, B=2, C=3, D=4. The quizbot will also give you the correct answer after you answer the question just understand the formatting is a little odd (Work in Progress but in a very usable form) but this has hundreds of updated questions and answers from the AWS Cloud Architect exam.
 
 **Raspberry Pi Quiz Bot**:
 
 1. Ensure your Raspberry Pi device is set up and connected.
 2. Run the `chatbot.py` script to start the quiz bot:
+
    ```bash
    python chatbot.py
    ```
