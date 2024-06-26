@@ -16,7 +16,7 @@ def create_lookup_table(file_path):
     return lookup_table
 
 # Path to the file containing QA pairs
-qa_file_path = './output_data_files/qa_pairs_output.txt'  # Update with the correct file path
+qa_file_path = './output_data_files/qa_pairs_output_final.txt'  # Update with the correct file path
 
 # Create the lookup table
 lookup_table = create_lookup_table(qa_file_path)
